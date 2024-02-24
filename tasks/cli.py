@@ -9,7 +9,6 @@ def handle_action():
         "2 - remove task\n"
         "3 - mark as done\n"
         "4 - show all tasks\n"
-        "5 - do you really wanna exit?\n"
     )
 
     match user_input:
@@ -26,19 +25,15 @@ def handle_action():
             mark_task_completed(index, True)
         case "4":
             print(get_all_tasks())
-        case '5':
-            #)
-            index = int(input("Choose 'y' or 'n' if you wanna exit: "))
-            if user_input == "y":
-                save_to_file(get_all_tasks(), "export")
-                return True
-            print(get_all_tasks())
         case _:
             print("Try again")
 
 
 def handle_interrupt():
-    user_input = input("\nDo you want to export tasks (y/n)?")
-    if user_input == "y":
-        save_to_file(get_all_tasks(), "export")
-        return True
+    user_input1 = input('\nDo you want to exit (y/n)?\n')
+    if user_input1 == "y":
+        user_input2 = input('\nExport tasks to file (y/n)?\n')
+        if user_input2 == "y":
+            save_to_file(get_all_tasks(), "export")
+            print('Tasks exported to file out/export.xlsx')
+    return True

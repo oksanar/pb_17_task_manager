@@ -11,7 +11,7 @@ git clone <repository_url>
 Create a virtual environment
 
 ```bash
-python -m venv venv
+python3 -m venv .venv
 ```
 
 Install dependencies
