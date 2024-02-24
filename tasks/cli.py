@@ -9,6 +9,7 @@ def handle_action():
         "2 - remove task\n"
         "3 - mark as done\n"
         "4 - show all tasks\n"
+        "5 - do you really wanna exit?\n"
     )
 
     match user_input:
@@ -24,6 +25,13 @@ def handle_action():
             index = int(input("Choose task index to mark as done: "))
             mark_task_completed(index, True)
         case "4":
+            print(get_all_tasks())
+        case '5':
+            #)
+            index = int(input("Choose 'y' or 'n' if you wanna exit: "))
+            if user_input == "y":
+                save_to_file(get_all_tasks(), "export")
+                return True
             print(get_all_tasks())
         case _:
             print("Try again")
