@@ -8,12 +8,12 @@ def add_task(title: str) -> None:
 
 
 def remove_task(index: int) -> None:
-    _DB.pop(index)
+    _DB.pop(index - 1)
 
 
 def mark_task_completed(index: int, completed: bool) -> None:
-    _DB[index]["completed"] = completed
+    _DB[index - 1]["completed"] = completed
 
 
 def get_all_tasks() -> List[Tuple[int, str, bool]]:
-    return [(i, task["title"], task["completed"]) for i, task in enumerate(_DB)]
+    return [(i + 1, task["title"], task["completed"]) for i, task in enumerate(_DB)]
